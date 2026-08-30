@@ -1,189 +1,105 @@
 /* src/sections/Skills/Skills.css */
 
 .skills-section {
-  width: 100%;
-  background-size: cover; 
-  background-position: bottom center; 
-  background-repeat: no-repeat;
-  padding: 100px 0 350px 0; 
-  border-top: 2px dashed var(--outline-variant);
-  border-bottom: 2px dashed var(--outline-variant);
   position: relative;
+  padding: 6rem 1.5rem;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
 }
 
 .skills-container {
-  max-width: 1200px;
+  width: 100%;
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 0 24px;
 }
 
 .skills-title {
-  font-family: var(--font-headline);
-  font-size: 40px;
-  color: var(--on-background);
-  margin-bottom: 48px;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-weight: 800;
   text-align: center;
-  line-height: 1.2;
+  margin-bottom: 3.5rem;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
 }
 
-/* Kombinasi Font "of the" yang Imut */
 .skills-accent {
-  font-family: var(--font-accent);
-  font-style: italic;
-  text-transform: lowercase;
-  color: var(--primary);
-  position: relative;
-  z-index: 1;
-  padding: 0 6px;
+  color: #0284C7;
+  font-weight: 600;
 }
 
-.skills-accent::after {
-  content: '';
-  position: absolute;
-  bottom: 6px;
-  left: -5%;
-  width: 110%;
-  height: 12px;
-  background-color: var(--tertiary-container);
-  z-index: -1;
-  border-radius: 9999px;
-  transform: rotate(-2deg);
-}
-
-/* Menggunakan CSS Grid untuk membagi 3 kolom sama besar */
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+  gap: 2rem;
 }
 
-/* Gaya Kartu Kategori (Tanpa Shadow) */
 .skill-category-card {
-  background-color: var(--surface);
-  border: 2px solid var(--on-surface-variant);
-  border-radius: 20px;
-  padding: 30px 24px;
-  transition: transform 0.3s ease; 
-}
-
-.skill-category-card:hover {
-  transform: translateY(-5px);
+  padding: 2.25rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
 }
 
 .category-title {
-  font-family: var(--font-headline);
-  font-size: 24px;
-  color: var(--on-background);
-  margin-bottom: 24px;
-  text-transform: uppercase;
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  letter-spacing: 0.01em;
+  width: 100%;
   text-align: center;
-  border-bottom: 2px dashed var(--outline-variant);
-  padding-bottom: 12px;
 }
 
-/* Wadah Pembungkus Tombol Keahlian */
 .skill-badges-wrapper {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 12px;
+  align-items: center;
+  gap: 0.85rem;
+  width: 100%;
 }
 
-/* Gaya Tombol Kapsul dengan Logo */
 .skill-badge-item {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 8px;
-  background-color: var(--background);
-  border: 1px solid var(--outline-variant);
-  padding: 8px 16px;
-  border-radius: 9999px;
-  transition: all 0.2s ease;
+  gap: 0.6rem;
+  padding: 0.55rem 1.1rem;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 4px 12px rgba(186, 230, 253, 0.25);
+  transition: background 0.3s ease;
 }
 
 .skill-badge-item:hover {
-  background-color: var(--primary-container);
-  border-color: var(--primary);
-  transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.75);
 }
 
-.skill-logo {
-  width: 20px;
-  height: 20px;
+.skill-logo-img {
+  width: 22px;
+  height: 22px;
   object-fit: contain;
 }
 
-.skill-name {
-  font-family: var(--font-button);
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--on-surface);
+.skill-name-text {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-primary);
 }
 
-/* =========================================
-   PENGATURAN RESPONSIVE (UNTUK HP & TABLET)
-   ========================================= */
-
-@media (max-width: 992px) {
-  .skills-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  .skills-section {
-    padding-bottom: 280px; 
-  }
-}
-
+/* Responsive */
 @media (max-width: 768px) {
-  .skills-section {
-    padding: 80px 0 200px 0; 
-  }
-
   .skills-title {
-    font-size: 32px;
-    margin-bottom: 32px;
+    font-size: 2rem;
   }
-
-  .skills-accent::after {
-    bottom: 4px;
-    height: 10px;
-  }
-  
   .skills-grid {
     grid-template-columns: 1fr;
-    gap: 24px;
-  }
-  
-  .skill-category-card {
-    padding: 24px 20px;
-  }
-}
-
-@media (max-width: 480px) {
-  .skills-section {
-    padding-bottom: 150px; 
-  }
-
-  .skills-title {
-    font-size: 28px;
-  }
-  
-  .category-title {
-    font-size: 20px;
-  }
-  
-  .skill-badge-item {
-    padding: 6px 14px;
-  }
-  
-  .skill-name {
-    font-size: 13px;
-  }
-  
-  .skill-logo {
-    width: 18px;
-    height: 18px;
   }
 }

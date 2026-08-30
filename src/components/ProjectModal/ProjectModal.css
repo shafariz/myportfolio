@@ -1,158 +1,177 @@
 /* src/components/ProjectModal/ProjectModal.css */
 
-.modal-overlay {
+.modal-frosted-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(27, 28, 26, 0.6);
-  backdrop-filter: blur(5px);
+  inset: 0;
+  z-index: 2000;
   display: flex;
-  justify-content: center;
   align-items: center;
-  z-index: 1000;
-  padding: 20px;
+  justify-content: center;
+  padding: 1.5rem;
+  background: rgba(15, 23, 42, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
-.modal-content {
-  background-color: var(--surface);
-  border: 3px solid var(--on-background);
-  border-radius: 24px;
+.modal-solid-container {
+  position: relative;
   width: 100%;
-  max-width: 650px;
+  max-width: 720px;
   max-height: 90vh;
   overflow-y: auto;
-  position: relative;
-  box-shadow: 12px 12px 0px var(--primary);
-  padding: 32px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 28px;
+  box-shadow: 0 25px 60px -12px rgba(186, 230, 253, 0.5), 0 16px 40px -10px rgba(2, 132, 199, 0.25);
+  padding: 0;
 }
 
 .modal-close-btn {
   position: absolute;
-  top: 16px;
-  right: 16px;
-  background-color: var(--primary-container);
-  border: 2px solid var(--on-background);
-  width: 36px;
-  height: 36px;
+  top: 1rem;
+  right: 1rem;
+  z-index: 30;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
-  font-size: 20px;
-  font-weight: bold;
-  cursor: pointer;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  color: var(--text-primary);
   display: flex;
-  justify-content: center;
   align-items: center;
-  transition: transform 0.2s ease;
-  z-index: 10;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.2);
+  transition: all 0.25s ease;
+  padding: 0;
 }
 
 .modal-close-btn:hover {
-  transform: scale(1.1);
-  background-color: var(--primary);
-  color: #ffffff;
+  background: #0284C7;
+  color: #FFFFFF;
+  border-color: #0284C7;
+  transform: scale(1.08);
 }
 
-.modal-img-wrapper {
+.close-icon {
+  font-size: 1.25rem;
+}
+
+.modal-img-preview {
+  position: relative;
   width: 100%;
-  height: 300px;
-  border-radius: 16px;
+  max-height: 380px;
   overflow: hidden;
-  border: 2px solid var(--outline-variant);
-  margin-bottom: 24px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-top-left-radius: 28px;
+  border-top-right-radius: 28px;
 }
 
 .modal-img {
   width: 100%;
   height: 100%;
+  max-height: 380px;
   object-fit: cover;
+  display: block;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+}
+
+.modal-details-body {
+  padding: 2rem 2.25rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.modal-header-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
 }
 
 .modal-type-badge {
-  display: inline-block;
-  font-family: var(--font-button);
-  font-size: 12px;
-  font-weight: 600;
-  background-color: var(--primary-container);
-  color: var(--on-primary-container);
-  padding: 4px 14px;
+  align-self: flex-start;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #0284C7;
+  background: #E0F2FE;
+  border: 1px solid rgba(2, 132, 199, 0.25);
+  padding: 0.25rem 0.85rem;
   border-radius: 9999px;
-  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.25rem;
 }
 
-.modal-title {
-  font-family: var(--font-headline);
-  font-size: 28px;
-  color: var(--on-background);
-  margin-bottom: 4px;
+.modal-title-heading {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.25;
 }
 
-.modal-subtitle {
+.modal-subtitle-text {
   font-family: var(--font-body);
-  font-size: 16px;
-  color: var(--on-surface-variant);
-  margin-bottom: 16px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-muted);
 }
 
-.modal-role-box {
-  font-family: var(--font-button);
-  font-size: 14px;
-  color: var(--primary);
-  margin-bottom: 24px;
-  background-color: var(--surface-container-low);
-  padding: 8px 16px;
-  border-radius: 8px;
-  display: inline-block;
+.modal-role-pill {
+  align-self: flex-start;
+  font-size: 0.875rem;
+  font-weight: 600;
+  background: rgba(240, 249, 255, 0.8);
+  color: var(--text-primary);
+  padding: 0.4rem 1.1rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(186, 230, 253, 0.8);
+  box-shadow: 0 2px 8px rgba(186, 230, 253, 0.2);
 }
 
-/* Bagian Teks Detail Proyek */
-.modal-text-section {
-  margin-bottom: 20px;
-}
-
-.modal-text-section:last-child {
-  margin-bottom: 0;
+.modal-section-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .modal-section-title {
-  font-family: var(--font-button);
-  font-size: 16px;
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
   font-weight: 700;
-  color: var(--on-background);
-  margin-bottom: 8px;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-  border-bottom: 2px dashed var(--outline-variant);
-  padding-bottom: 6px;
-  display: inline-block;
+  color: var(--text-primary);
+  padding-bottom: 0.35rem;
+  border-bottom: 2px solid rgba(224, 242, 254, 0.8);
 }
 
-.modal-desc {
+.modal-desc-paragraph {
   font-family: var(--font-body);
-  font-size: 15px;
-  color: var(--on-surface-variant);
-  line-height: 1.7;
+  font-size: 0.95rem;
+  font-weight: 400;
+  line-height: 1.75;
+  color: var(--text-secondary);
   text-align: justify;
+  text-justify: inter-word;
 }
 
-/* =========================================
-   RESPONSIVE UNTUK HP & TABLET
-   ========================================= */
-
-@media (max-width: 768px) {
-  .modal-content {
-    padding: 24px;
+@media (max-width: 640px) {
+  .modal-details-body {
+    padding: 1.5rem 1.25rem 1.75rem;
   }
-  .modal-img-wrapper {
-    height: 200px;
+  .modal-title-heading {
+    font-size: 1.4rem;
   }
-  .modal-title {
-    font-size: 24px;
-  }
-  .modal-section-title {
-    font-size: 14px;
-  }
-  .modal-desc {
-    font-size: 14px;
+  .modal-img-preview,
+  .modal-img {
+    max-height: 250px;
   }
 }

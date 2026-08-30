@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { FaChevronRight } from 'react-icons/fa';
+import gsap from 'gsap';
 import { portfolioData } from '../../data/portfolioData';
 import './Experience.css';
 
@@ -11,65 +13,90 @@ const Experience = () => {
     setActiveIndex(activeIndex === index ? null : index);
   };
 
+  const handleHeadMouseEnter = (e) => {
+    gsap.to(e.currentTarget, {
+      scale: 1.015,
+      duration: 0.3,
+      ease: "power2.out"
+    });
+  };
+
+  const handleHeadMouseLeave = (e) => {
+    gsap.to(e.currentTarget, {
+      scale: 1,
+      duration: 0.3,
+      ease: "power2.out"
+    });
+  };
+
   return (
     <section className="experience-section" id="experience">
       <div className="experience-container">
-        
-        <motion.div 
+
+        {/* Title Header */}
+        <motion.div
           className="experience-header"
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.6 }}
         >
-          <h2 className="experience-title">EXPERIENCE</h2>
+          <h2 className="experience-title-heading">
+            My <span className="exp-title-accent serif-italic">Journey</span>
+          </h2>
         </motion.div>
 
-        <div className="accordion-wrapper">
+        {/* Accordion List */}
+        <div className="experience-accordion-wrapper">
           {experiences.map((exp, index) => {
             const isActive = activeIndex === index;
 
             return (
-              <motion.div 
+              <motion.div
                 key={exp.id}
-                className={`accordion-item ${isActive ? 'active' : ''}`}
-                initial={{ opacity: 0, y: 20 }}
+                className={`exp-glass-item glass-card ${isActive ? 'exp-active' : ''}`}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
+                transition={{ duration: 0.5, delay: index * 0.12 }}
               >
-                {/* Kepala Kartu Accordion */}
-                <div 
-                  className="accordion-head" 
+                {/* Accordion Head */}
+                <div
+                  className="exp-accordion-head"
                   onClick={() => toggleAccordion(index)}
+                  onMouseEnter={handleHeadMouseEnter}
+                  onMouseLeave={handleHeadMouseLeave}
                 >
-                  <div className="accordion-info">
-                    <div className="accordion-titles">
-                      <h3 className="accordion-role-title">{exp.title}</h3>
-                      <p className="accordion-org">{exp.organization}</p>
-                    </div>
-                    <span className="accordion-date">{exp.date}</span>
+                  <div className="exp-info-box">
+                    <h3 className="exp-role-title">{exp.title}</h3>
+                    <p className="exp-organization-name">{exp.organization}</p>
                   </div>
-                  
-                  <div className={`accordion-icon ${isActive ? 'rotate' : ''}`}>
-                    <span className="material-symbols-outlined">expand_more</span>
+
+                  <div className="exp-head-right">
+                    <span className="exp-date-pill glass-pill">{exp.date}</span>
+                    <div className={`exp-toggle-icon ${isActive ? 'icon-rotated' : ''}`}>
+                      <span className="material-symbols-outlined">expand_more</span>
+                    </div>
                   </div>
                 </div>
 
-                {/* Isi Detail Poin-poin */}
-                <AnimatePresence>
+                {/* Accordion Body */}
+                <AnimatePresence initial={false}>
                   {isActive && (
                     <motion.div
-                      className="accordion-body-wrapper"
+                      className="exp-accordion-body-wrapper"
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                      transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                     >
-                      <div className="accordion-body">
+                      <div className="exp-accordion-body">
                         <ul className="accordion-description-list">
                           {exp.description.map((point, idx) => (
-                            <li key={idx}>{point}</li>
+                            <li key={idx} className="exp-description-item">
+                              <FaChevronRight className="exp-bullet-icon" />
+                              <span>{point}</span>
+                            </li>
                           ))}
                         </ul>
                       </div>

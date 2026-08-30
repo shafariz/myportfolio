@@ -13,22 +13,22 @@ import salbeautyImg from '../assets/salbeauty.webp';
 
 export const portfolioData = {
   hero: {
+    badge: "Information Systems Student",
     greeting: "Hello, I'm",
-    name: "shafa.",
-    role1: "Aspiring Data Analyst",
-    role2: "& Front-End Developer",
-    image: profileImg 
+    name: "Shafa",
+    role1: "Aspiring Web Developer",
+    role2: "& Data Analyst",
+    cvUrl: "https://drive.google.com/drive/u/0/folders/1JZO4gnaTvmbxndsYFXQNc0D-ABfs-JWj",
+    image: profileImg
   },
 
   about: {
-    titleLine1: "TRANSLATING",
-    titleHighlight: "logic",
-    titleLine2: "INTO CREATIVE DIGITAL SOLUTIONS",
-    
+    title: "Turning Curiosity into Creation",
+
     introText: "I'm ",
     nameText: "Shafa Rizqi Nur Wahidah",
     descText: ", an Information Systems student at Universitas Mulawarman with a strong interest in Front-End Development and Data Analytics. I love turning ideas into engaging digital experiences, collaborating on creative projects, and exploring how technology can solve real-world problems.",
-    
+
     education: [
       {
         id: 1,
@@ -186,6 +186,7 @@ export const portfolioData = {
   contact: {
     email: "shafarizqinurwahidah@student.unmul.ac.id",
     linkedin: "https://www.linkedin.com/in/shafariz/",
-    instagram: "https://instagram.com/sshafariz"
+    instagram: "https://instagram.com/sshafariz",
+    github: "https://github.com/shafariz"
   }
 };

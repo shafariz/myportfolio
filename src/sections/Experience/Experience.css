@@ -1,203 +1,179 @@
 /* src/sections/Experience/Experience.css */
 
 .experience-section {
-  width: 100%;
-  background-color: var(--background);
-  padding: 120px 0;
+  position: relative;
+  padding: 6rem 1.5rem;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
 }
 
 .experience-container {
-  max-width: 900px; 
+  width: 100%;
+  max-width: 1000px;
   margin: 0 auto;
-  padding: 0 24px;
 }
 
 .experience-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.experience-title-heading {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.exp-title-accent {
+  color: #0284C7;
+  padding: 0 0.25rem;
+}
+
+.experience-accordion-wrapper {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin-bottom: 48px;
+  gap: 1.5rem;
 }
 
-.experience-title {
-  font-family: var(--font-headline);
-  font-size: 40px;
-  color: var(--on-background);
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-
-/* --- KOTAK KARTU ACCORDION --- */
-.accordion-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.accordion-item {
-  background-color: var(--surface);
-  border: 2px solid var(--outline-variant);
-  border-radius: 20px;
+.exp-glass-item {
   overflow: hidden;
-  box-shadow: 6px 6px 0px var(--primary-container);
-  transition: all 0.3s ease;
+  border-radius: 20px;
+  transition: all 0.35s ease;
 }
 
-.accordion-item:hover,
-.accordion-item.active {
-  border-color: var(--primary);
-  box-shadow: 8px 8px 0px var(--primary);
+.exp-glass-item.exp-active {
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 16px 40px -10px rgba(2, 132, 199, 0.25), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
 }
 
-/* --- KEPALA KARTU --- */
-.accordion-head {
-  padding: 24px;
+.exp-accordion-head {
+  padding: 1.75rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
   user-select: none;
-  background-color: transparent;
-  transition: background-color 0.3s ease;
-  gap: 20px;
 }
 
-.accordion-item.active .accordion-head {
-  background-color: var(--surface-container-low);
-  border-bottom: 2px dashed var(--outline-variant);
-}
-
-.accordion-info {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  gap: 20px;
-}
-
-.accordion-titles {
+.exp-info-box {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  align-items: flex-start;
+  gap: 0.35rem;
 }
 
-.accordion-role-title {
-  font-family: var(--font-button);
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--on-background);
-}
-
-.accordion-org {
-  font-family: var(--font-body);
-  font-size: 15px;
-  color: var(--primary);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
-}
-
-.accordion-date {
-  font-family: var(--font-button);
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--on-secondary-container);
-  background-color: var(--secondary-container);
-  padding: 6px 14px;
-  border-radius: 9999px;
-  letter-spacing: 0.05em;
-  white-space: nowrap;
-}
-
-/* Tombol Ikon Panah V */
-.accordion-icon {
+.exp-head-right {
   display: flex;
-  justify-content: center;
   align-items: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: var(--primary-container);
-  color: var(--on-primary-container);
-  transition: transform 0.3s ease, background-color 0.3s ease;
+  gap: 1.25rem;
   flex-shrink: 0;
 }
 
-.accordion-item.active .accordion-icon {
-  background-color: var(--primary);
-  color: #ffffff;
+.exp-date-pill {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--text-secondary);
+  padding: 0.4rem 0.95rem;
+  white-space: nowrap;
 }
 
-.accordion-icon.rotate {
+.exp-role-title {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.exp-organization-name {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.exp-toggle-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary);
+  transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.3s;
+  flex-shrink: 0;
+}
+
+.exp-toggle-icon.icon-rotated {
   transform: rotate(180deg);
+  background: rgba(2, 132, 199, 0.25);
+  color: var(--text-primary);
 }
 
-/* --- ISI KARTU (DETAIL POIN) --- */
-.accordion-body-wrapper {
+.exp-accordion-body-wrapper {
   overflow: hidden;
 }
 
-.accordion-body {
-  padding: 24px;
-  background-color: var(--surface);
+.exp-accordion-body {
+  padding: 1.25rem 2rem 1.75rem 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-.accordion-description-list {
+.exp-description-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.exp-description-item {
   font-family: var(--font-body);
-  font-size: 16px;
-  color: var(--on-surface-variant);
-  line-height: 1.8;
-  text-align: justify;
-  padding-left: 20px;
-  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
 }
 
-.accordion-description-list li {
-  margin-bottom: 10px;
+.exp-bullet-icon {
+  color: #0284C7;
+  font-size: 0.75rem;
+  flex-shrink: 0;
+  margin-top: 0.35rem;
 }
 
-.accordion-description-list li:last-child {
-  margin-bottom: 0;
-}
-
-/* =========================================
-   RESPONSIVE UNTUK HP & TABLET
-   ========================================= */
-
+/* Responsive */
 @media (max-width: 768px) {
-  .experience-section {
-    padding: 80px 0;
+  .experience-title-heading {
+    font-size: 2rem;
   }
-
-  .experience-title {
-    font-size: 32px;
+  .exp-accordion-head {
+    padding: 1.25rem 1.25rem;
   }
-
-  .accordion-head {
-    padding: 18px;
+  .exp-accordion-body {
+    padding: 0 1.25rem 1.25rem 1.25rem;
   }
+  .exp-role-title {
+    font-size: 1.15rem;
+  }
+}
 
-  /* Di layar HP, tanggal dipindah ke bawah nama instansi agar tidak terlalu sempit */
-  .accordion-info {
-    flex-direction: column;
+@media (max-width: 640px) {
+  .exp-accordion-head {
+    flex-direction: column-reverse;
     align-items: flex-start;
-    gap: 12px;
+    gap: 0.75rem;
   }
-
-  .accordion-role-title {
-    font-size: 17px;
-  }
-
-  .accordion-org {
-    font-size: 14px;
-  }
-
-  .accordion-body {
-    padding: 18px;
-  }
-
-  .accordion-description-list {
-    font-size: 14px;
-    padding-left: 16px;
+  .exp-head-right {
+    width: 100%;
+    justify-content: space-between;
   }
 }

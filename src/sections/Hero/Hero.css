@@ -1,228 +1,197 @@
 /* src/sections/Hero/Hero.css */
 
 .hero-section {
-  width: 100%;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  padding: 100px 0;
   position: relative;
-  overflow: hidden;
   min-height: 85vh;
   display: flex;
   align-items: center;
-}
-
-/* Overlay transparan di atas background agar teks tetap mudah dibaca */
-.hero-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(255, 248, 240, 0.7); /* Nuansa warna lembut Y2K yang menutupi background */
-  z-index: 1;
+  justify-content: center;
+  padding: 8rem 1.5rem 4rem;
 }
 
 .hero-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 24px;
   width: 100%;
-  position: relative;
-  z-index: 10;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
-/* FLEXBOX: Membagi konten menjadi kiri dan kanan */
-.hero-content {
+.hero-floating-wrapper {
+  padding: 1rem 0;
+  position: relative;
+  width: 100%;
+}
+
+.hero-centered-content {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  gap: 40px;
+  text-align: center;
+  gap: 1.5rem;
+  width: 100%;
 }
 
-/* Bagian Kiri (Teks) */
-.hero-text {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.greeting-box {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.hero-greeting {
-  font-family: var(--font-button);
-  font-size: 24px;
-  color: var(--on-primary-container);
-  font-weight: 600;
+.hero-greeting-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-weight: 700;
   letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.45rem 1.1rem;
 }
 
-/* Gaya Nama yang Imut & Bervariasi */
-.hero-name {
-  font-family: var(--font-accent);
-  font-style: italic;
-  font-size: 100px;
-  color: var(--primary);
-  line-height: 1;
-  margin: -10px 0 20px 0;
-}
-
-/* Highlight Coretan di Belakang Nama */
-.sketch-highlight {
-  position: relative;
-  z-index: 1;
+.hero-pill-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #22C55E;
+  box-shadow: 0 0 8px rgba(34, 197, 94, 0.6);
   display: inline-block;
 }
 
-.sketch-highlight::after {
-  content: '';
-  position: absolute;
-  bottom: 10px;
-  left: -5%;
-  width: 110%;
-  height: 40px;
-  background-color: var(--secondary-container);
-  z-index: -1;
-  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-  transform: rotate(-2deg);
-}
-
-/* Gaya Posisi/Peran */
-.hero-role {
-  font-family: var(--font-headline);
-  font-size: 50px;
+.hero-name-heading {
+  font-family: var(--font-heading);
+  font-size: 4.8rem;
+  font-weight: 800;
   line-height: 1.1;
-  color: #32101b;
-  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  color: #0F172A;
+  margin: 0;
 }
 
-.role-accent {
-  color: var(--primary);
-  opacity: 0.9;
+.hero-name-accent {
+  color: #0284C7;
+  padding-left: 0.25rem;
 }
 
-/* Bagian Kanan (Foto) */
-.hero-image-box {
-  flex: 1;
+.hero-role-subheading {
+  font-family: var(--font-body);
+  font-size: 1.8rem;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--text-primary);
+}
+
+.hero-role-accent {
+  color: #0284C7;
+  padding-right: 0.35rem;
+  font-size: 1.1em;
+}
+
+/* Action Buttons Container - Centered */
+.hero-action-buttons {
   display: flex;
-  justify-content: flex-end;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
 }
 
-.hero-image-wrapper {
-  position: relative;
-  width: 380px;
-  height: 480px;
-  border-radius: 20px;
-  border: 4px solid var(--surface);
-  box-shadow: 0px 15px 35px rgba(128, 81, 94, 0.2);
-  transform: rotate(3deg);
-  transition: transform 0.3s ease;
-  background-color: var(--surface);
-}
-
-.hero-image-wrapper:hover {
-  transform: rotate(0deg) translateY(-10px);
-}
-
-.hero-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 16px;
-}
-
-/* Stiker Imut */
-.cute-badge {
-  position: absolute;
-  bottom: -20px;
-  left: -25px;
-  background-color: var(--tertiary-container);
-  color: var(--on-tertiary-container);
-  font-family: var(--font-button);
-  font-size: 16px;
+.hero-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: #0284C7;
+  color: #FFFFFF;
   font-weight: 700;
-  padding: 10px 24px;
+  font-size: 0.95rem;
+  padding: 0.85rem 1.75rem;
   border-radius: 9999px;
-  border: 2px solid var(--on-surface);
-  transform: rotate(-15deg);
+  text-decoration: none;
+  box-shadow: 0 8px 20px -4px rgba(2, 132, 199, 0.35);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Hiasan Latar Belakang */
-.hero-blob {
-  position: absolute;
-  top: -10%;
-  right: -5%;
-  width: 600px;
-  height: 600px;
-  background-color: var(--primary);
-  opacity: 0.08;
-  border-radius: 50%;
-  filter: blur(80px);
-  z-index: 0;
+.hero-btn-primary:hover {
+  background: #0369A1;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px -4px rgba(2, 132, 199, 0.5);
+  color: #FFFFFF;
 }
 
-/* =========================================
-   PENGATURAN RESPONSIVE (UNTUK HP & TABLET)
-   ========================================= */
-
-@media (max-width: 992px) {
-  .hero-content {
-    flex-direction: column;
-    text-align: center;
-    gap: 60px;
-  }
-
-  .greeting-box {
-    align-items: center;
-  }
-
-  .hero-image-box {
-    justify-content: center;
-  }
-
-  .hero-name {
-    font-size: 80px;
-  }
-
-  .hero-role {
-    font-size: 40px;
-  }
+.hero-btn-primary .btn-icon {
+  font-size: 1.1rem;
+  transition: transform 0.3s ease;
 }
 
-@media (max-width: 576px) {
+.hero-btn-primary:hover .btn-icon {
+  transform: translate(2px, 2px);
+}
+
+.hero-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  color: #0F172A;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 0.85rem 1.75rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgba(186, 230, 253, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.85);
+  border-color: #0284C7;
+  color: #0284C7;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(2, 132, 199, 0.25);
+}
+
+.hero-btn-secondary .btn-icon {
+  font-size: 1.1rem;
+  transition: transform 0.3s ease;
+}
+
+.hero-btn-secondary:hover .btn-icon {
+  transform: translate(2px, -2px);
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 768px) {
   .hero-section {
-    padding: 60px 0;
+    min-height: 100vh;
+    padding: 9rem 1.25rem 7rem;
   }
-
-  .hero-name {
-    font-size: 65px;
-    margin-bottom: 10px;
+  .hero-name-heading {
+    font-size: 3.2rem;
   }
-
-  .sketch-highlight::after {
-    height: 25px;
-    bottom: 5px;
+  .hero-role-subheading {
+    font-size: 1.25rem;
   }
-
-  .hero-role {
-    font-size: 32px;
+  .hero-centered-content {
+    gap: 1.75rem;
   }
+}
 
-  .hero-image-wrapper {
-    width: 280px;
-    height: 360px;
+@media (max-width: 480px) {
+  .hero-section {
+    min-height: 100vh;
+    padding: 8.5rem 1rem 6.5rem;
   }
-
-  .cute-badge {
-    font-size: 14px;
-    padding: 8px 20px;
-    bottom: -15px;
-    left: -15px;
+  .hero-name-heading {
+    font-size: 2.65rem;
+  }
+  .hero-role-subheading {
+    font-size: 1.1rem;
+  }
+  .hero-action-buttons {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.85rem;
+  }
+  .hero-btn-primary,
+  .hero-btn-secondary {
+    width: 100%;
+    justify-content: center;
   }
 }

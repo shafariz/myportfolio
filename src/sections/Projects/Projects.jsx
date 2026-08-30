@@ -11,54 +11,68 @@ const Projects = () => {
   return (
     <section className="projects-section" id="projects">
       <div className="projects-container">
-        
-        <motion.div 
+
+        {/* Title Header */}
+        <motion.div
           className="projects-header"
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.6 }}
         >
-          <h2 className="projects-title">FEATURED PROJECTS</h2>
-          <p className="projects-subtitle">Click any card to see full details</p>
+          <h2 className="projects-title-heading">
+            Things I've <span className="proj-title-accent serif-italic">Build</span>
+          </h2>
+          <p className="projects-subtitle-text">Explore some of my recent work and digital solutions</p>
         </motion.div>
 
-        {/* Grid Kartu Proyek */}
+        {/* Projects Grid */}
         <div className="projects-grid">
           {projects.map((project, index) => (
-            <motion.div 
+            <motion.div
               key={project.id}
-              className="project-card"
+              className="project-exact-card"
               onClick={() => setSelectedProject(project)}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 35 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <div className="project-image-wrapper">
-                <img src={project.image} alt={project.title} className="project-img" />
+              <div className="project-image-container">
+                <img src={project.image} alt={project.title} className="project-card-img" />
+                <div className="view-project-overlay">
+                  <span className="view-project-pill">View Project</span>
+                </div>
               </div>
 
-              <div className="project-info">
-                <h3 className="project-card-title">{project.title}</h3>
-                {project.subtitle && <p className="project-card-subtitle">{project.subtitle}</p>}
-                
-                <div className="project-meta-box">
-                  <div className="project-role-text">
-                    <span className="meta-label">MY ROLE</span>
-                    <span className="meta-value">{project.role}</span>
-                  </div>
-                  <span className="project-type-badge">{project.type}</span>
+              <div className="project-card-body">
+                <div className="project-title-wrapper">
+                  <h3 className="project-card-title">{project.title}</h3>
+                  {project.subtitle && <p className="project-card-subtitle">{project.subtitle}</p>}
+                </div>
+
+                <div className="project-divider"></div>
+
+                <div className="project-role-section">
+                  <span className="project-role-label">MY ROLE</span>
+                  <span className="project-role-value">{project.role}</span>
+                </div>
+
+                <div className="project-type-section">
+                  <span className="project-type-pill">
+                    <span className="pill-dot"></span>
+                    {project.type}
+                  </span>
                 </div>
               </div>
             </motion.div>
           ))}
         </div>
 
-        {/* Pemanggilan Komponen Modal Terpisah */}
-        <ProjectModal 
-          project={selectedProject} 
-          onClose={() => setSelectedProject(null)} 
+        {/* Project Details Modal Component */}
+        <ProjectModal
+          project={selectedProject}
+          onClose={() => setSelectedProject(null)}
         />
 
       </div>

@@ -1,237 +1,206 @@
 /* src/sections/About/About.css */
 
 .about-section {
-  width: 100%;
-  background-color: var(--background);
-  padding: 120px 0;
   position: relative;
+  padding: 6rem 1.5rem;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
 }
 
 .about-container {
-  max-width: 1200px;
+  width: 100%;
+  max-width: 1150px;
   margin: 0 auto;
-  padding: 0 24px;
 }
 
-.about-content {
+/* Header */
+.about-header {
+  margin-bottom: 2.5rem;
+  text-align: left;
+}
+
+.about-title-heading {
+  font-family: var(--font-heading);
+  font-size: 2.35rem;
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+.title-gradient-accent {
+  color: #0284C7;
+  font-weight: 800;
+  padding: 0 0.2rem;
+}
+
+/* Grid Layout */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.35fr 0.65fr;
+  gap: 2rem;
+  align-items: stretch;
+}
+
+/* Left Column: Photo & Bio Wrapper */
+.about-bio-photo-wrapper {
+  display: flex;
+  gap: 1.5rem;
+  align-items: stretch;
+  height: 100%;
+}
+
+.about-photo-card {
+  width: 280px;
+  height: 100%;
+  min-height: 280px;
+  flex-shrink: 0;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 
+    0 24px 48px -12px rgba(15, 23, 42, 0.22),
+    0 12px 24px -8px rgba(2, 132, 199, 0.18);
+  transition: all 0.4s ease;
+}
+
+.about-photo-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 
+    0 32px 60px -12px rgba(15, 23, 42, 0.28),
+    0 16px 32px -8px rgba(2, 132, 199, 0.25);
+}
+
+.about-profile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.about-bio-card {
+  flex-grow: 1;
+  height: 100%;
+  padding: 2rem 2.25rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 60px;
 }
 
-/* --- KOLOM KIRI (Teks) --- */
-.about-text-area {
-  flex: 1;
-  position: relative;
-  padding-right: 20px;
-}
-
-.about-title {
-  font-family: var(--font-headline);
-  font-size: 46px;
-  line-height: 1.1;
-  color: var(--on-background);
-  margin-bottom: 24px;
-  text-transform: uppercase;
-}
-
-.italic-accent {
-  font-family: var(--font-accent);
-  font-style: italic;
-  text-transform: lowercase;
-  color: var(--primary);
-  position: relative;
-  z-index: 1;
-}
-
-.italic-accent::after {
-  content: '';
-  position: absolute;
-  bottom: 8px;
-  left: -5%;
-  width: 110%;
-  height: 15px;
-  background-color: var(--tertiary-container);
-  z-index: -1;
-  border-radius: 9999px;
-  transform: rotate(-2deg);
-}
-
-.about-description {
+.about-bio-paragraph {
   font-family: var(--font-body);
-  font-size: 18px;
-  color: var(--on-surface-variant);
+  font-size: 1rem;
+  font-weight: 400;
   line-height: 1.8;
+  color: var(--text-secondary);
   text-align: justify;
-  width: 100%;
+  text-justify: inter-word;
 }
 
 .about-name-bold {
   font-weight: 700;
-  color: var(--on-background);
+  color: #0284C7;
 }
 
-.about-decoration-badge {
-  display: inline-block;
-  margin-top: 32px;
-  background-color: var(--surface);
-  color: var(--on-surface);
-  font-family: var(--font-button);
-  font-size: 14px;
-  font-weight: bold;
-  padding: 10px 24px;
-  border-radius: 9999px;
-  border: 2px solid var(--outline-variant);
-  transform: rotate(-5deg);
-}
-
-/* --- KOLOM KANAN (Pendidikan) --- */
-.about-edu-area {
-  flex: 1;
+/* Education Column */
+.about-edu-col {
   display: flex;
   flex-direction: column;
+  gap: 1rem;
+  height: 100%;
 }
 
 .edu-section-title {
-  font-family: var(--font-headline);
-  font-size: 32px;
-  color: var(--on-background);
-  margin-bottom: 24px;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 0.02em;
+  margin-bottom: 0.25rem;
 }
 
-.edu-cards-wrapper {
+.edu-cards-list {
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  width: 100%;
+  gap: 1rem;
+  flex-grow: 1;
 }
 
-.edu-card {
-  width: 100%; 
-  background-color: var(--surface);
-  border: 2px solid var(--outline-variant);
-  border-radius: 20px;
-  padding: 32px;
-  position: relative;
-  transition: all 0.3s ease;
-  box-shadow: 6px 6px 0px var(--primary-container);
-  
-  /* Layout Flexbox agar logo dan teks bersebelahan */
+.edu-glass-card {
+  padding: 1.25rem 1.5rem;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  gap: 20px;
+  justify-content: space-between;
+  gap: 1.25rem;
+  cursor: default;
+  flex-grow: 1;
 }
 
-.edu-card:nth-child(2) {
-  box-shadow: 6px 6px 0px var(--secondary-container);
+.edu-text-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.3rem;
 }
 
-.edu-card:hover {
-  transform: translate(-4px, -4px);
-  box-shadow: 10px 10px 0px var(--primary-container);
-  border-color: var(--primary);
+.edu-period-badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  padding: 0.15rem 0.65rem;
 }
 
-.edu-card:nth-child(2):hover {
-  box-shadow: 10px 10px 0px var(--secondary-container);
+.edu-major-title {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
 }
 
-.edu-text-content {
-  flex: 1;
-}
-
-.edu-year-badge {
-  display: inline-block;
-  background-color: var(--on-surface);
-  color: var(--surface);
-  font-family: var(--font-button);
-  font-size: 12px;
-  padding: 6px 16px;
-  border-radius: 9999px;
-  margin-bottom: 16px;
-  letter-spacing: 0.05em;
-}
-
-.edu-major {
-  font-family: var(--font-button);
-  font-size: 22px;
-  color: var(--on-background);
-  margin-bottom: 8px;
-}
-
-.edu-school {
+.edu-school-name {
   font-family: var(--font-body);
-  font-size: 16px;
-  color: var(--on-surface-variant);
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: var(--text-muted);
 }
 
-/* Gaya untuk Logo di dalam kartu */
-.edu-logo {
-  width: 80px;
-  height: 80px;
-  object-fit: contain; /* Memastikan logo tidak terpotong */
-  opacity: 0.9;
+.edu-logo-wrapper {
+  width: 50px;
+  height: 50px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.6);
+  padding: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.8);
 }
 
-/* =========================================
-   PENGATURAN RESPONSIVE (UNTUK HP & TABLET)
-   ========================================= */
+.edu-logo-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
 
+/* Responsive */
 @media (max-width: 992px) {
-  .about-content {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+  .about-bio-photo-wrapper {
     flex-direction: column;
-    gap: 60px;
-  }
-
-  .about-text-area {
-    padding-right: 0;
-    text-align: center;
-  }
-
-  .about-description {
-    text-align: justify;
-  }
-
-  .italic-accent::after {
-    bottom: 5px;
-    height: 10px;
-  }
-
-  .about-edu-area {
-    width: 100%;
     align-items: center;
   }
-
-  .edu-cards-wrapper {
-    align-items: stretch;
+  .about-photo-card {
+    width: 260px;
+    height: 310px;
   }
 }
 
-@media (max-width: 576px) {
-  .about-section {
-    padding: 80px 0;
-  }
-
-  .about-title {
-    font-size: 36px;
-  }
-  
-  .edu-section-title {
-    font-size: 28px;
-  }
-
-  .edu-card {
-    padding: 24px;
-    gap: 16px; /* Mengurangi jarak antara teks dan logo di HP */
-  }
-  
-  /* Mengecilkan logo di HP agar ruang teks tidak sempit */
-  .edu-logo {
-    width: 50px;
-    height: 50px;
+@media (max-width: 480px) {
+  .about-title-heading {
+    font-size: 1.8rem;
   }
 }

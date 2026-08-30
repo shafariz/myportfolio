@@ -1,146 +1,321 @@
 /* src/components/Navbar/Navbar.css */
 
-.navbar {
-  position: fixed; 
-  top: 24px; 
+.navbar-wrapper {
+  position: fixed;
+  top: 1.25rem;
   left: 0;
   right: 0;
-  margin: 0 auto; /* Menjaga posisi tetap di tengah secara absolut */
-  
-  width: 90%;
-  max-width: 950px;
-  background-color: rgba(255, 248, 240, 0.6); /* Transparan ringan */
-  backdrop-filter: blur(16px); 
-  -webkit-backdrop-filter: blur(16px);
-  border: 1.5px solid rgba(255, 255, 255, 0.6);
-  border-radius: 9999px; /* Bentuk kapsul melingkar */
-  box-shadow: 0 10px 30px rgba(128, 81, 94, 0.1);
-  z-index: 100;
-  padding: 10px 24px;
-}
-
-.navbar-container {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-}
-
-.navbar-logo {
-  display: inline-block; /* Diperlukan agar GSAP scale berfungsi sempurna */
-  font-family: var(--font-headline);
-  font-size: 26px;
-  color: var(--primary);
-  text-decoration: none;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-}
-
-.navbar-links-desktop {
-  display: flex;
-  gap: 32px; 
-  align-items: center;
-}
-
-.navbar-links-desktop a {
-  display: inline-block; /* Diperlukan agar GSAP scale berfungsi sempurna */
-  font-family: var(--font-button);
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--on-surface); /* Warna default */
-  text-decoration: none;
-  /* Transisi CSS dihapus di sini karena di-handle oleh GSAP */
-}
-
-/* Tombol Contact Kapsul Kanan */
-.navbar-contact-desktop {
-  font-family: var(--font-button);
-  font-size: 14px;
-  font-weight: 700;
-  color: #ffffff;
-  background-color: var(--primary);
-  text-decoration: none;
-  padding: 10px 24px;
-  border-radius: 9999px;
-  transition: all 0.3s ease;
-  /* box-shadow sudah dihapus */
-}
-
-.navbar-contact-desktop:hover {
-  background-color: var(--on-background);
-  transform: translateY(-2px); /* Cukup naik sedikit tanpa bayangan */
-  /* box-shadow hover sudah dihapus */
-}
-
-/* Tombol Menu Mobile */
-.mobile-menu-btn {
-  display: none;
-  background: var(--primary-container);
-  border: none;
-  color: var(--primary);
-  cursor: pointer;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
   justify-content: center;
   align-items: center;
+  z-index: 1000;
+  padding: 0 1.25rem;
+  pointer-events: none;
 }
 
-/* Dropdown Menu Mobile */
-.navbar-mobile-menu {
-  display: none;
-  position: absolute;
-  top: calc(100% + 16px);
-  left: 0;
+.navbar-glass-pill {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
-  background-color: rgba(255, 248, 240, 0.95);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1.5px solid rgba(255, 255, 255, 0.6);
-  border-radius: 24px;
-  padding: 16px 24px;
-  box-shadow: 0 10px 30px rgba(128, 81, 94, 0.15);
-  flex-direction: column;
-  gap: 8px;
+  max-width: 780px;
+  padding: 0.55rem 0.65rem 0.55rem 1.5rem;
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+  border: var(--glass-border);
+  border-radius: 9999px;
+  box-shadow: 
+    0 10px 30px -5px rgba(186, 230, 253, 0.35),
+    0 8px 20px -6px rgba(2, 132, 199, 0.15),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+  transition: max-width 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              padding 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.navbar-mobile-menu a {
-  font-family: var(--font-button);
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--on-surface);
+/* Scrolled Navbar State (Desktop) */
+.navbar-glass-pill.scrolled {
+  max-width: 580px;
+  padding: 0.425rem 0.6rem 0.425rem 1.25rem;
+  background: rgba(255, 255, 255, 0.65);
+  box-shadow: 
+    0 12px 35px -5px rgba(186, 230, 253, 0.45),
+    0 10px 25px -6px rgba(2, 132, 199, 0.2),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+}
+
+/* Desktop Links Container */
+.navbar-links-desktop {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Link Items - FONT SIZE IS CONSTANT & IDENTICAL AT 0.925rem IN BOTH HERO AND SCROLLED STATES */
+.nav-link-item {
+  font-family: var(--font-body);
+  font-size: 0.925rem;
+  font-weight: 500;
+  color: var(--text-primary);
   text-decoration: none;
-  padding: 12px 0;
-  border-bottom: 1px solid var(--outline-variant);
+  padding: 0.45rem 1rem;
+  border-radius: 9999px;
+  transition: all 0.25s ease;
+  white-space: nowrap;
 }
 
-.navbar-mobile-menu a:last-child {
-  border-bottom: none;
+.nav-link-item:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.nav-link-item.active {
+  background: #0284C7;
+  color: #FFFFFF;
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.4);
+}
+
+/* Contact Button (Desktop) */
+.navbar-contact-btn {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: #FFFFFF;
+  background: #0284C7;
+  height: 38px;
+  padding: 0 1.25rem;
+  border-radius: 9999px;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  margin-left: 1rem;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.navbar-contact-btn:hover {
+  background: #FFFFFF;
+  color: #0284C7;
+  border-color: #FFFFFF;
+}
+
+.navbar-contact-btn:hover .contact-btn-text,
+.navbar-contact-btn:hover .contact-btn-icon {
+  color: #0284C7;
+}
+
+.contact-btn-text {
+  display: inline-block;
+  max-width: 120px;
+  opacity: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  color: #FFFFFF;
+  transition: max-width 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              color 0.25s ease;
+}
+
+.contact-btn-icon {
+  font-size: 0.9rem;
+  flex-shrink: 0;
+  color: #FFFFFF;
+  transition: font-size 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              color 0.25s ease;
+}
+
+/* Scrolled Contact Button - Generous spacing from Projects link */
+.navbar-contact-btn.scrolled {
+  padding: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  gap: 0;
+  background: #0284C7;
+  margin-left: 1.5rem;
+  flex-shrink: 0;
+}
+
+.navbar-contact-btn.scrolled .contact-btn-text {
+  max-width: 0;
+  opacity: 0;
+}
+
+.navbar-contact-btn.scrolled .contact-btn-icon {
+  font-size: 0.95rem;
+}
+
+/* Active Contact State */
+.navbar-contact-btn.active-contact,
+.mobile-contact-icon-btn.active-contact {
+  background: #0284C7 !important;
+  color: #FFFFFF !important;
+  border-color: #0284C7 !important;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.4) !important;
+}
+
+.navbar-contact-btn.active-contact .contact-btn-icon,
+.navbar-contact-btn.active-contact .contact-btn-text,
+.mobile-contact-icon-btn.active-contact .mobile-contact-icon {
+  color: #FFFFFF !important;
+}
+
+/* Desktop Hide Mobile Buttons */
+.mobile-menu-btn,
+.mobile-contact-icon-btn {
+  display: none;
+}
+
+/* Mobile Glassmorphism Animated Dropdown Menu Container */
+.navbar-mobile-menu {
+  pointer-events: auto !important;
+  position: absolute;
+  top: calc(100% + 0.75rem);
+  left: 1.25rem;
+  right: 1.25rem;
+  overflow: hidden;
+  z-index: 2010 !important;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 24px;
+  box-shadow: 
+    0 20px 40px -10px rgba(186, 230, 253, 0.4),
+    0 12px 25px -8px rgba(2, 132, 199, 0.18),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.7);
+}
+
+.mobile-menu-inner {
+  pointer-events: auto !important;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+/* Mobile Nav Link Items - Ultra Clear & Legible over Frosted Glass */
+.mobile-nav-link {
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #0F172A;
+  text-decoration: none;
+  padding: 0.65rem 1rem;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.mobile-nav-link:hover,
+.mobile-nav-link.active {
+  background: #0284C7;
+  color: #FFFFFF;
+  font-weight: 800;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
 }
 
 .mobile-contact-btn {
-  color: var(--primary) !important;
-  margin-top: 8px;
+  background: #0284C7;
+  color: #ffffff !important;
+  border-radius: 9999px;
+  padding: 0.75rem !important;
+  margin-top: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(2, 132, 199, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.4);
 }
 
-/* =========================================
-   RESPONSIVE UNTUK HP & TABLET
-   ========================================= */
-@media (max-width: 900px) {
+/* Responsive Media Queries (Mobile & Tablet) */
+@media (max-width: 768px) {
   .navbar-links-desktop,
-  .navbar-contact-desktop {
-    display: none;
+  .navbar-contact-btn {
+    display: none !important;
   }
-  
+
+  /* Left Hamburger Button */
   .mobile-menu-btn {
+    display: flex !important;
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    color: #0F172A;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+
+  /* Right Mobile Contact Me Icon Button */
+  .mobile-contact-icon-btn {
+    display: flex !important;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #0284C7;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    text-decoration: none;
+    box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
+  }
+
+  .mobile-contact-icon-btn:hover {
+    background: #FFFFFF;
+    border-color: #FFFFFF;
+  }
+
+  .mobile-contact-icon-btn:hover .mobile-contact-icon {
+    color: #0284C7;
+  }
+
+  .mobile-contact-icon {
+    font-size: 0.95rem;
+    color: #FFFFFF;
+    transition: color 0.25s ease;
+  }
+
+  /* Fixed Mobile Navbar Container - Transparent background, ONLY floating buttons */
+  .navbar-glass-pill,
+  .navbar-glass-pill.scrolled {
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
   .navbar-mobile-menu {
-    display: flex;
-  }
-  
-  .navbar {
-    width: 95%;
+    left: 0;
+    right: 0;
   }
 }

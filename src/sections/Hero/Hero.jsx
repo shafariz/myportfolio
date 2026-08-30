@@ -1,66 +1,78 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { FiArrowUpRight, FiArrowDownRight } from 'react-icons/fi';
 import { portfolioData } from '../../data/portfolioData';
-import heroBg from '../../assets/hero-bg.webp'; // <-- Impor gambar background kamu di sini
 import './Hero.css';
 
 const Hero = () => {
   const { hero } = portfolioData;
 
   return (
-    <section 
-      className="hero-section" 
-      id="home"
-      style={{ backgroundImage: `url(${heroBg})` }} // <-- Memasang background gambar secara dinamis
-    >
-      {/* Overlay agar teks tetap kontras dan mudah dibaca */}
-      <div className="hero-overlay"></div>
-
+    <section className="hero-section" id="home">
       <div className="hero-container">
-        <div className="hero-content">
-          
-          {/* Kolom Kiri: Teks */}
-          <div className="hero-text">
+        
+        <motion.div 
+          className="hero-floating-wrapper"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          <div className="hero-centered-content">
+            
             <motion.div 
-              className="greeting-box"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <span className="hero-greeting">{hero.greeting}</span>
-              <h1 className="hero-name sketch-highlight">{hero.name}</h1>
-            </motion.div>
-
-            <motion.h2 
-              className="hero-role"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
-              {hero.role1} <br />
-              <span className="role-accent">{hero.role2}</span>
-            </motion.h2>
-          </div>
-
-          {/* Kolom Kanan: Foto */}
-          <div className="hero-image-box">
-            <motion.div 
-              className="hero-image-wrapper"
+              className="hero-greeting-pill glass-pill"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              <span className="hero-pill-dot"></span>
+              <span>{hero.badge}</span>
+            </motion.div>
+
+            <motion.h1 
+              className="hero-name-heading"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              <img src={hero.image} alt="Shafa" className="hero-img" />
-              <div className="cute-badge">
-                CREATIVE
-              </div>
-            </motion.div>
-          </div>
+              Hello, I'm <span className="serif-italic hero-name-accent">{hero.name}</span>
+            </motion.h1>
 
-        </div>
+            <motion.h2 
+              className="hero-role-subheading"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
+              <span className="serif-italic hero-role-accent">Aspiring</span> Web Developer &amp; Data Analyst
+            </motion.h2>
+
+            <motion.div 
+              className="hero-action-buttons"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+            >
+              <a href="#projects" className="hero-btn-primary">
+                <span>My Projects</span>
+                <FiArrowDownRight className="btn-icon" />
+              </a>
+
+              <a 
+                href={hero.cvUrl} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="hero-btn-secondary"
+              >
+                <span>View My CV</span>
+                <FiArrowUpRight className="btn-icon" />
+              </a>
+            </motion.div>
+
+          </div>
+        </motion.div>
+
       </div>
-      
-      <div className="hero-blob"></div>
     </section>
   );
 };

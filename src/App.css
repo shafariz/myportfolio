@@ -1,184 +1,656 @@
-.counter {
-  font-size: 16px;
-  padding: 5px 10px;
-  border-radius: 5px;
-  color: var(--accent);
-  background: var(--accent-bg);
-  border: 2px solid transparent;
-  transition: border-color 0.3s;
-  margin-bottom: 24px;
+/* src/App.css */
 
-  &:hover {
-    border-color: var(--accent-border);
-  }
-  &:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-  }
-}
-
-.hero {
+.app-wrapper {
   position: relative;
-
-  .base,
-  .framework,
-  .vite {
-    inset-inline: 0;
-    margin: 0 auto;
-  }
-
-  .base {
-    width: 170px;
-    position: relative;
-    z-index: 0;
-  }
-
-  .framework,
-  .vite {
-    position: absolute;
-  }
-
-  .framework {
-    z-index: 1;
-    top: 34px;
-    height: 28px;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
-      scale(1.4);
-  }
-
-  .vite {
-    z-index: 0;
-    top: 107px;
-    height: 26px;
-    width: auto;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
-      scale(0.8);
-  }
-}
-
-#center {
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-  place-content: center;
-  place-items: center;
-  flex-grow: 1;
-
-  @media (max-width: 1024px) {
-    padding: 32px 20px 24px;
-    gap: 18px;
-  }
-}
-
-#next-steps {
-  display: flex;
-  border-top: 1px solid var(--border);
-  text-align: left;
-
-  & > div {
-    flex: 1 1 0;
-    padding: 32px;
-    @media (max-width: 1024px) {
-      padding: 24px 20px;
-    }
-  }
-
-  .icon {
-    margin-bottom: 16px;
-    width: 22px;
-    height: 22px;
-  }
-
-  @media (max-width: 1024px) {
-    flex-direction: column;
-    text-align: center;
-  }
-}
-
-#docs {
-  border-right: 1px solid var(--border);
-
-  @media (max-width: 1024px) {
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-  }
-}
-
-#next-steps ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  gap: 8px;
-  margin: 32px 0 0;
-
-  .logo {
-    height: 18px;
-  }
-
-  a {
-    color: var(--text-h);
-    font-size: 16px;
-    border-radius: 6px;
-    background: var(--social-bg);
-    display: flex;
-    padding: 6px 12px;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    transition: box-shadow 0.3s;
-
-    &:hover {
-      box-shadow: var(--shadow);
-    }
-    .button-icon {
-      height: 18px;
-      width: 18px;
-    }
-  }
-
-  @media (max-width: 1024px) {
-    margin-top: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-
-    li {
-      flex: 1 1 calc(50% - 8px);
-    }
-
-    a {
-      width: 100%;
-      justify-content: center;
-      box-sizing: border-box;
-    }
-  }
-}
-
-#spacer {
-  height: 88px;
-  border-top: 1px solid var(--border);
-  @media (max-width: 1024px) {
-    height: 48px;
-  }
-}
-
-.ticks {
-  position: relative;
+  min-height: 100vh;
   width: 100%;
+  overflow-x: hidden;
+}
 
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    top: -4.5px;
-    border: 5px solid transparent;
-  }
+/* Document-Wide Animated Clouds & Airport Background Container */
+.cloud-background-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
 
-  &::before {
-    left: 0;
-    border-left-color: var(--border);
+/* Fresh Sky Mesh Gradient Overlay - Pure Sky Blue, Cloud White & Soft Glow */
+.sky-gradient-overlay {
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 15% 15%, rgba(224, 242, 254, 0.95) 0%, transparent 45%),
+    radial-gradient(circle at 85% 20%, rgba(186, 230, 253, 0.85) 0%, transparent 50%),
+    radial-gradient(circle at 75% 12%, rgba(255, 255, 255, 0.9) 0%, transparent 40%),
+    radial-gradient(circle at 30% 65%, rgba(240, 249, 255, 0.9) 0%, transparent 55%),
+    radial-gradient(circle at 80% 85%, rgba(186, 230, 253, 0.7) 0%, transparent 40%);
+  filter: blur(40px);
+  z-index: 1;
+}
+
+/* Warm Yellow Sun Element in Hero Background (Compact Sun Disc without edge bleed) */
+.hero-sun-container {
+  position: absolute;
+  top: 90px;
+  right: 18%;
+  z-index: 2;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-sun-disc {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #FEF08A 0%, #FACC15 100%);
+  box-shadow: 
+    0 0 20px rgba(250, 204, 21, 0.65),
+    0 0 40px rgba(253, 224, 71, 0.35);
+  z-index: 2;
+}
+
+.hero-sun-corona {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(254, 240, 138, 0.4) 0%, rgba(253, 224, 71, 0.15) 50%, transparent 75%);
+  filter: blur(6px);
+  z-index: 1;
+  animation: sunPulse 6s ease-in-out infinite alternate;
+}
+
+@keyframes sunPulse {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.8;
   }
-  &::after {
-    right: 0;
-    border-right-color: var(--border);
+  100% {
+    transform: scale(1.08);
+    opacity: 1;
   }
+}
+
+/* Floating Small Hot Air Balloons (In Non-Hero Sections) */
+.hot-air-balloon {
+  position: absolute;
+  z-index: 3;
+  pointer-events: none;
+  animation: floatBalloon 12s ease-in-out infinite alternate;
+  filter: drop-shadow(0 6px 14px rgba(2, 132, 199, 0.25));
+}
+
+.balloon-svg {
+  width: 48px;
+  height: 68px;
+}
+
+.balloon-1 {
+  top: 26%;
+  left: 5%;
+  animation-duration: 14s;
+}
+
+.balloon-2 {
+  top: 54%;
+  right: 6%;
+  animation-duration: 16s;
+  animation-delay: -5s;
+}
+
+@keyframes floatBalloon {
+  0% {
+    transform: translateY(0) rotate(-2deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(2deg);
+  }
+  100% {
+    transform: translateY(-6px) rotate(-1deg);
+  }
+}
+
+/* Moving Cloud Elements */
+.cloud {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.68);
+  border-radius: 100px;
+  filter: blur(12px);
+  z-index: 2;
+  box-shadow: 
+    0 10px 40px rgba(255, 255, 255, 0.85),
+    inset 0 0 20px rgba(255, 255, 255, 0.9);
+  animation: floatCloud linear infinite;
+}
+
+.cloud::before,
+.cloud::after {
+  content: '';
+  position: absolute;
+  background: rgba(255, 255, 255, 0.68);
+  border-radius: 50%;
+  filter: blur(10px);
+}
+
+/* Cloud 1 */
+.cloud-1 {
+  width: 320px;
+  height: 100px;
+  top: 5%;
+  left: -350px;
+  animation-duration: 42s;
+  animation-delay: 0s;
+  opacity: 0.75;
+}
+.cloud-1::before {
+  width: 140px;
+  height: 140px;
+  top: -60px;
+  left: 50px;
+}
+.cloud-1::after {
+  width: 110px;
+  height: 110px;
+  top: -40px;
+  left: 150px;
+}
+
+/* Cloud 2 */
+.cloud-2 {
+  width: 450px;
+  height: 130px;
+  top: 18%;
+  left: -480px;
+  animation-duration: 58s;
+  animation-delay: -15s;
+  opacity: 0.65;
+}
+.cloud-2::before {
+  width: 180px;
+  height: 180px;
+  top: -80px;
+  left: 80px;
+}
+.cloud-2::after {
+  width: 150px;
+  height: 150px;
+  top: -50px;
+  left: 220px;
+}
+
+/* Cloud 3 */
+.cloud-3 {
+  width: 280px;
+  height: 90px;
+  top: 32%;
+  left: -300px;
+  animation-duration: 36s;
+  animation-delay: -8s;
+  opacity: 0.7;
+}
+.cloud-3::before {
+  width: 120px;
+  height: 120px;
+  top: -50px;
+  left: 40px;
+}
+.cloud-3::after {
+  width: 90px;
+  height: 90px;
+  top: -30px;
+  left: 130px;
+}
+
+/* Cloud 4 */
+.cloud-4 {
+  width: 500px;
+  height: 140px;
+  top: 44%;
+  left: -520px;
+  animation-duration: 65s;
+  animation-delay: -28s;
+  opacity: 0.6;
+}
+.cloud-4::before {
+  width: 200px;
+  height: 200px;
+  top: -90px;
+  left: 100px;
+}
+.cloud-4::after {
+  width: 160px;
+  height: 160px;
+  top: -60px;
+  left: 260px;
+}
+
+/* Cloud 5 */
+.cloud-5 {
+  width: 360px;
+  height: 110px;
+  top: 56%;
+  left: -380px;
+  animation-duration: 48s;
+  animation-delay: -18s;
+  opacity: 0.7;
+}
+.cloud-5::before {
+  width: 150px;
+  height: 150px;
+  top: -65px;
+  left: 60px;
+}
+.cloud-5::after {
+  width: 120px;
+  height: 120px;
+  top: -45px;
+  left: 170px;
+}
+
+/* Cloud 6 */
+.cloud-6 {
+  width: 420px;
+  height: 120px;
+  top: 66%;
+  left: -450px;
+  animation-duration: 54s;
+  animation-delay: -32s;
+  opacity: 0.65;
+}
+.cloud-6::before {
+  width: 170px;
+  height: 170px;
+  top: -75px;
+  left: 70px;
+}
+.cloud-6::after {
+  width: 140px;
+  height: 140px;
+  top: -50px;
+  left: 200px;
+}
+
+/* Cloud 7 */
+.cloud-7 {
+  width: 300px;
+  height: 95px;
+  top: 76%;
+  left: -320px;
+  animation-duration: 40s;
+  animation-delay: -22s;
+  opacity: 0.72;
+}
+.cloud-7::before {
+  width: 130px;
+  height: 130px;
+  top: -55px;
+  left: 45px;
+}
+.cloud-7::after {
+  width: 100px;
+  height: 100px;
+  top: -35px;
+  left: 140px;
+}
+
+/* Cloud 8 */
+.cloud-8 {
+  width: 480px;
+  height: 135px;
+  top: 85%;
+  left: -500px;
+  animation-duration: 62s;
+  animation-delay: -10s;
+  opacity: 0.58;
+}
+.cloud-8::before {
+  width: 190px;
+  height: 190px;
+  top: -85px;
+  left: 90px;
+}
+.cloud-8::after {
+  width: 150px;
+  height: 150px;
+  top: -55px;
+  left: 240px;
+}
+
+/* Cloud 9 */
+.cloud-9 {
+  width: 340px;
+  height: 105px;
+  top: 12%;
+  left: -360px;
+  animation-duration: 50s;
+  animation-delay: -35s;
+  opacity: 0.7;
+}
+.cloud-9::before {
+  width: 140px;
+  height: 140px;
+  top: -60px;
+  left: 55px;
+}
+.cloud-9::after {
+  width: 110px;
+  height: 110px;
+  top: -40px;
+  left: 160px;
+}
+
+/* Cloud 10 */
+.cloud-10 {
+  width: 400px;
+  height: 115px;
+  top: 28%;
+  left: -420px;
+  animation-duration: 56s;
+  animation-delay: -5s;
+  opacity: 0.62;
+}
+.cloud-10::before {
+  width: 160px;
+  height: 160px;
+  top: -70px;
+  left: 65px;
+}
+.cloud-10::after {
+  width: 130px;
+  height: 130px;
+  top: -45px;
+  left: 190px;
+}
+
+/* Cloud 11 */
+.cloud-11 {
+  width: 310px;
+  height: 98px;
+  top: 40%;
+  left: -330px;
+  animation-duration: 44s;
+  animation-delay: -25s;
+  opacity: 0.68;
+}
+.cloud-11::before {
+  width: 130px;
+  height: 130px;
+  top: -55px;
+  left: 50px;
+}
+.cloud-11::after {
+  width: 105px;
+  height: 105px;
+  top: -35px;
+  left: 145px;
+}
+
+/* Cloud 12 */
+.cloud-12 {
+  width: 460px;
+  height: 130px;
+  top: 60%;
+  left: -480px;
+  animation-duration: 60s;
+  animation-delay: -40s;
+  opacity: 0.64;
+}
+.cloud-12::before {
+  width: 180px;
+  height: 180px;
+  top: -80px;
+  left: 80px;
+}
+.cloud-12::after {
+  width: 145px;
+  height: 145px;
+  top: -50px;
+  left: 220px;
+}
+
+@keyframes floatCloud {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(100vw + 600px));
+  }
+}
+
+/* Dotted Flight Path Route Line */
+.flight-route-container {
+  position: absolute;
+  top: 15%;
+  left: 0;
+  width: 100%;
+  height: 70%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.flight-route-svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Mountain Ridge Silhouette (Mid-level Horizon above Airport) */
+.mountain-ridge-container {
+  position: absolute;
+  bottom: 220px;
+  left: 0;
+  width: 100%;
+  height: 240px;
+  z-index: 2;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.mountain-ridge-svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Animated Flying Airplanes (3 Planes Across Document Heights) */
+.airplane-flying-wrapper {
+  position: absolute;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+}
+
+.flying-plane-icon {
+  font-size: 1.85rem;
+  color: rgba(2, 132, 199, 0.75);
+  transform: rotate(-10deg);
+  filter: drop-shadow(0 4px 8px rgba(2, 132, 199, 0.3));
+}
+
+.plane-reversed {
+  transform: rotate(190deg);
+}
+
+.plane-descent {
+  font-size: 2.15rem;
+  transform: rotate(6deg);
+}
+
+.airplane-trail {
+  width: 150px;
+  height: 3px;
+  background: linear-gradient(to left, rgba(255, 255, 255, 0.85), transparent);
+  border-radius: 9999px;
+  margin-right: -4px;
+  filter: blur(1px);
+}
+
+.trail-reversed {
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.85), transparent);
+  margin-right: 0;
+  margin-left: -4px;
+}
+
+/* Plane 1: Upper Sky / Hero (Left to Right) */
+.plane-1 {
+  top: 220px;
+  left: -200px;
+  animation: flyAirplane1 34s linear infinite;
+}
+
+@keyframes flyAirplane1 {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(calc(50vw + 100px), -35px);
+  }
+  100% {
+    transform: translate(calc(100vw + 400px), -15px);
+  }
+}
+
+/* Plane 2: Mid Sky / Skills & Experience (Right to Left) */
+.plane-2 {
+  top: 45%;
+  right: -200px;
+  animation: flyAirplane2 42s linear infinite;
+  animation-delay: -14s;
+}
+
+@keyframes flyAirplane2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(calc(-50vw - 100px), 30px);
+  }
+  100% {
+    transform: translate(calc(-100vw - 400px), 15px);
+  }
+}
+
+/* Plane 3: Lower Sky / Descent towards Projects & Airport (Left to Right) */
+.plane-3 {
+  top: 73%;
+  left: -220px;
+  animation: flyAirplane3 28s linear infinite;
+  animation-delay: -6s;
+}
+
+@keyframes flyAirplane3 {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(calc(50vw + 100px), 40px);
+  }
+  100% {
+    transform: translate(calc(100vw + 440px), 85px);
+  }
+}
+
+/* Airport Control Tower & Skyline */
+.airport-skyline-container {
+  position: absolute;
+  bottom: 45px;
+  left: 0;
+  width: 100%;
+  height: 220px;
+  z-index: 3;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.airport-skyline-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.tower-beacon {
+  animation: beaconPulse 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes beaconPulse {
+  0% {
+    opacity: 0.3;
+    r: 3px;
+  }
+  100% {
+    opacity: 1;
+    r: 5px;
+    filter: drop-shadow(0 0 6px #E11D48);
+  }
+}
+
+/* Airport Runway Base Strip */
+.airport-runway-strip {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 45px;
+  background: linear-gradient(to top, rgba(30, 41, 59, 0.18), rgba(51, 65, 85, 0.08));
+  border-top: 1px dashed rgba(255, 255, 255, 0.45);
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.runway-centerline {
+  position: absolute;
+  width: 100%;
+  height: 0;
+  border-top: 2px dashed rgba(255, 255, 255, 0.6);
+}
+
+.runway-lights-row {
+  position: absolute;
+  width: 95%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.runway-light {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  animation: lightBlink 2s ease-in-out infinite alternate;
+}
+
+.light-cyan {
+  background: #38BDF8;
+  box-shadow: 0 0 8px #38BDF8;
+}
+
+.light-gold {
+  background: #FACC15;
+  box-shadow: 0 0 8px #FACC15;
+  animation-delay: 1s;
+}
+
+@keyframes lightBlink {
+  0% {
+    opacity: 0.4;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+/* Main Content Container above Background */
+.main-content {
+  position: relative;
+  z-index: 10;
 }

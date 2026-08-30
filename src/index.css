@@ -1,33 +1,48 @@
 /* src/index.css */
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap');
 
-/* 1. VARIABEL GLOBAL (Warna Soft Y2K & Font) */
 :root {
-  /* Warna Dasar (Background & Teks) */
-  --background: #fbf9f6;
-  --surface: #fbf9f6;
-  --on-surface: #1b1c1a;
-  --on-surface-variant: #504446;
-  --outline-variant: #d4c2c5;
-
-  /* Warna Aksen Y2K (Pink, Biru, Kuning Mentega) */
-  --primary: #80515e;
-  --primary-container: #ffc2d1;
-  --on-primary-container: #7b4d5a;
+  /* Dreamy Sky Palette */
+  --sky-pink-light: #FFF0F5;
+  --sky-pink: #FFD1DC;
+  --sky-pink-accent: #E11D48;
+  --sky-blue-light: #E0F2FE;
+  --sky-blue: #AEC6CF;
+  --sky-blue-accent: #0284C7;
+  --sky-gradient: linear-gradient(135deg, #FFE4E6 0%, #F0F9FF 50%, #E0F2FE 100%);
   
-  --secondary-container: #a1d1fe;
-  --on-secondary-container: #265a81;
+  /* Text Colors (Solid, High-Contrast Colors - No Gradients) */
+  --text-primary: #0F172A;
+  --text-secondary: #334155;
+  --text-muted: #64748B;
+  --text-accent: #0284C7;
   
-  --tertiary-container: #d9d4a1;
-  --on-tertiary-container: #5e5c32;
+  /* Glassmorphism Tokens */
+  --glass-bg: rgba(255, 255, 255, 0.35);
+  --glass-bg-subtle: rgba(255, 255, 255, 0.22);
+  --glass-bg-hover: rgba(255, 255, 255, 0.55);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.55);
+  --glass-border-subtle: 1px solid rgba(255, 255, 255, 0.35);
+  --glass-border-glow: 1px solid rgba(255, 255, 255, 0.8);
+  --glass-shadow: 0 10px 30px -5px rgba(186, 230, 253, 0.35), 0 8px 20px -6px rgba(2, 132, 199, 0.15), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+  --glass-shadow-hover: 0 20px 40px -10px rgba(147, 197, 253, 0.45), 0 12px 25px -8px rgba(2, 132, 199, 0.25), inset 0 0 0 1px rgba(255, 255, 255, 0.7);
+  --glass-backdrop: blur(16px) saturate(180%);
 
-  /* Font Family */
-  --font-headline: 'Anton', sans-serif;            /* Untuk Judul Besar */
-  --font-button: 'Be Vietnam Pro', sans-serif;     /* Untuk Tombol & Navbar */
-  --font-body: 'Plus Jakarta Sans', sans-serif;    /* Untuk Teks Paragraf */
-  --font-accent: 'Literata', serif;                /* Untuk Teks Italic Cantik */
+  /* Typography */
+  --font-heading: 'Plus Jakarta Sans', sans-serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+  --font-serif: 'Instrument Serif', serif;
 }
 
-/* 2. RESET CSS DASAR */
+.serif-italic {
+  font-family: var(--font-serif) !important;
+  font-style: italic !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.01em;
+  font-size: 1.08em;
+}
+
+/* Global Reset */
 * {
   margin: 0;
   padding: 0;
@@ -35,19 +50,85 @@
 }
 
 html {
-  scroll-behavior: smooth; /* Efek scroll halus */
+  scroll-behavior: smooth;
 }
 
 body {
   font-family: var(--font-body);
-  background-color: var(--background);
-  color: var(--on-surface);
+  color: var(--text-primary);
   line-height: 1.6;
-  overflow-x: hidden; /* Mencegah layar tergeser ke samping */
+  overflow-x: hidden;
+  min-height: 100vh;
+  background: var(--sky-gradient);
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* 3. PENGATURAN MATERIAL ICONS */
+/* All headings strict Plus Jakarta Sans */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+/* All text & interactive elements strict Plus Jakarta Sans */
+p, span, button, a, input, textarea, li, div, badge {
+  font-family: var(--font-body);
+}
+
+/* Material Symbols */
 .material-symbols-outlined {
   font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
   vertical-align: middle;
+}
+
+/* Reusable Glass Card Utility */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+  border: var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: 24px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.glass-card:hover {
+  background: var(--glass-bg-hover);
+  box-shadow: var(--glass-shadow-hover);
+  border: var(--glass-border-glow);
+}
+
+/* Reusable Glass Pill Badge */
+.glass-pill {
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 9999px;
+  padding: 0.35rem 1rem;
+  font-size: 0.825rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  box-shadow: 0 4px 12px rgba(186, 230, 253, 0.25);
+}
+
+/* Scrollbar Customization */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(174, 198, 207, 0.6);
+  border-radius: 10px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(244, 114, 182, 0.7);
 }
