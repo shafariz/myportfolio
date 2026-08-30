@@ -1,0 +1,164 @@
+/* src/sections/Projects/Projects.css */
+
+.projects-section {
+  width: 100%;
+  background-color: var(--surface-container-low);
+  padding: 120px 0;
+}
+
+.projects-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.projects-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.projects-title {
+  font-family: var(--font-headline);
+  font-size: 44px;
+  color: var(--on-background);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.projects-subtitle {
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--on-surface-variant);
+}
+
+/* --- GRID KARTU PROYEK --- */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.project-card {
+  background-color: var(--surface);
+  border: 2px solid var(--outline-variant);
+  border-radius: 24px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 6px 6px 0px var(--primary-container);
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--primary);
+  box-shadow: 12px 12px 0px var(--primary-container);
+}
+
+.project-image-wrapper {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  background-color: var(--surface-container);
+  border-bottom: 2px solid var(--outline-variant);
+}
+
+.project-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.project-card:hover .project-img {
+  transform: scale(1.05);
+}
+
+.project-info {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: space-between;
+}
+
+.project-card-title {
+  font-family: var(--font-button);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--on-background);
+  margin-bottom: 4px;
+}
+
+.project-card-subtitle {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--on-surface-variant);
+  margin-bottom: 20px;
+}
+
+.project-meta-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px dashed var(--outline-variant);
+  padding-top: 16px;
+  margin-top: auto;
+}
+
+.project-role-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.meta-label {
+  font-family: var(--font-button);
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--primary);
+  letter-spacing: 0.1em;
+}
+
+.meta-value {
+  font-family: var(--font-button);
+  font-size: 13px;
+  color: var(--on-background);
+  font-weight: 600;
+}
+
+.project-type-badge {
+  font-family: var(--font-button);
+  font-size: 11px;
+  font-weight: 600;
+  background-color: var(--secondary-container);
+  color: var(--on-secondary-container);
+  padding: 4px 12px;
+  border-radius: 9999px;
+}
+
+/* =========================================
+   RESPONSIVE UNTUK HP & TABLET
+   ========================================= */
+
+@media (max-width: 992px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .projects-section {
+    padding: 80px 0;
+  }
+
+  .projects-title {
+    font-size: 32px;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}

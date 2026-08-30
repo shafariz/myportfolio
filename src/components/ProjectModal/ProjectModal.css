@@ -1,0 +1,158 @@
+/* src/components/ProjectModal/ProjectModal.css */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(27, 28, 26, 0.6);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modal-content {
+  background-color: var(--surface);
+  border: 3px solid var(--on-background);
+  border-radius: 24px;
+  width: 100%;
+  max-width: 650px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 12px 12px 0px var(--primary);
+  padding: 32px;
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background-color: var(--primary-container);
+  border: 2px solid var(--on-background);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s ease;
+  z-index: 10;
+}
+
+.modal-close-btn:hover {
+  transform: scale(1.1);
+  background-color: var(--primary);
+  color: #ffffff;
+}
+
+.modal-img-wrapper {
+  width: 100%;
+  height: 300px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 2px solid var(--outline-variant);
+  margin-bottom: 24px;
+}
+
+.modal-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modal-type-badge {
+  display: inline-block;
+  font-family: var(--font-button);
+  font-size: 12px;
+  font-weight: 600;
+  background-color: var(--primary-container);
+  color: var(--on-primary-container);
+  padding: 4px 14px;
+  border-radius: 9999px;
+  margin-bottom: 12px;
+}
+
+.modal-title {
+  font-family: var(--font-headline);
+  font-size: 28px;
+  color: var(--on-background);
+  margin-bottom: 4px;
+}
+
+.modal-subtitle {
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--on-surface-variant);
+  margin-bottom: 16px;
+}
+
+.modal-role-box {
+  font-family: var(--font-button);
+  font-size: 14px;
+  color: var(--primary);
+  margin-bottom: 24px;
+  background-color: var(--surface-container-low);
+  padding: 8px 16px;
+  border-radius: 8px;
+  display: inline-block;
+}
+
+/* Bagian Teks Detail Proyek */
+.modal-text-section {
+  margin-bottom: 20px;
+}
+
+.modal-text-section:last-child {
+  margin-bottom: 0;
+}
+
+.modal-section-title {
+  font-family: var(--font-button);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--on-background);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  border-bottom: 2px dashed var(--outline-variant);
+  padding-bottom: 6px;
+  display: inline-block;
+}
+
+.modal-desc {
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--on-surface-variant);
+  line-height: 1.7;
+  text-align: justify;
+}
+
+/* =========================================
+   RESPONSIVE UNTUK HP & TABLET
+   ========================================= */
+
+@media (max-width: 768px) {
+  .modal-content {
+    padding: 24px;
+  }
+  .modal-img-wrapper {
+    height: 200px;
+  }
+  .modal-title {
+    font-size: 24px;
+  }
+  .modal-section-title {
+    font-size: 14px;
+  }
+  .modal-desc {
+    font-size: 14px;
+  }
+}

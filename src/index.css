@@ -1,0 +1,53 @@
+/* src/index.css */
+
+/* 1. VARIABEL GLOBAL (Warna Soft Y2K & Font) */
+:root {
+  /* Warna Dasar (Background & Teks) */
+  --background: #fbf9f6;
+  --surface: #fbf9f6;
+  --on-surface: #1b1c1a;
+  --on-surface-variant: #504446;
+  --outline-variant: #d4c2c5;
+
+  /* Warna Aksen Y2K (Pink, Biru, Kuning Mentega) */
+  --primary: #80515e;
+  --primary-container: #ffc2d1;
+  --on-primary-container: #7b4d5a;
+  
+  --secondary-container: #a1d1fe;
+  --on-secondary-container: #265a81;
+  
+  --tertiary-container: #d9d4a1;
+  --on-tertiary-container: #5e5c32;
+
+  /* Font Family */
+  --font-headline: 'Anton', sans-serif;            /* Untuk Judul Besar */
+  --font-button: 'Be Vietnam Pro', sans-serif;     /* Untuk Tombol & Navbar */
+  --font-body: 'Plus Jakarta Sans', sans-serif;    /* Untuk Teks Paragraf */
+  --font-accent: 'Literata', serif;                /* Untuk Teks Italic Cantik */
+}
+
+/* 2. RESET CSS DASAR */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth; /* Efek scroll halus */
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--background);
+  color: var(--on-surface);
+  line-height: 1.6;
+  overflow-x: hidden; /* Mencegah layar tergeser ke samping */
+}
+
+/* 3. PENGATURAN MATERIAL ICONS */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  vertical-align: middle;
+}

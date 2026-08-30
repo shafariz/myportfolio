@@ -1,0 +1,228 @@
+/* src/sections/Hero/Hero.css */
+
+.hero-section {
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+}
+
+/* Overlay transparan di atas background agar teks tetap mudah dibaca */
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 248, 240, 0.7); /* Nuansa warna lembut Y2K yang menutupi background */
+  z-index: 1;
+}
+
+.hero-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  width: 100%;
+  position: relative;
+  z-index: 10;
+}
+
+/* FLEXBOX: Membagi konten menjadi kiri dan kanan */
+.hero-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+/* Bagian Kiri (Teks) */
+.hero-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.greeting-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.hero-greeting {
+  font-family: var(--font-button);
+  font-size: 24px;
+  color: var(--on-primary-container);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+/* Gaya Nama yang Imut & Bervariasi */
+.hero-name {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: 100px;
+  color: var(--primary);
+  line-height: 1;
+  margin: -10px 0 20px 0;
+}
+
+/* Highlight Coretan di Belakang Nama */
+.sketch-highlight {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+}
+
+.sketch-highlight::after {
+  content: '';
+  position: absolute;
+  bottom: 10px;
+  left: -5%;
+  width: 110%;
+  height: 40px;
+  background-color: var(--secondary-container);
+  z-index: -1;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  transform: rotate(-2deg);
+}
+
+/* Gaya Posisi/Peran */
+.hero-role {
+  font-family: var(--font-headline);
+  font-size: 50px;
+  line-height: 1.1;
+  color: #32101b;
+  text-transform: uppercase;
+}
+
+.role-accent {
+  color: var(--primary);
+  opacity: 0.9;
+}
+
+/* Bagian Kanan (Foto) */
+.hero-image-box {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.hero-image-wrapper {
+  position: relative;
+  width: 380px;
+  height: 480px;
+  border-radius: 20px;
+  border: 4px solid var(--surface);
+  box-shadow: 0px 15px 35px rgba(128, 81, 94, 0.2);
+  transform: rotate(3deg);
+  transition: transform 0.3s ease;
+  background-color: var(--surface);
+}
+
+.hero-image-wrapper:hover {
+  transform: rotate(0deg) translateY(-10px);
+}
+
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+/* Stiker Imut */
+.cute-badge {
+  position: absolute;
+  bottom: -20px;
+  left: -25px;
+  background-color: var(--tertiary-container);
+  color: var(--on-tertiary-container);
+  font-family: var(--font-button);
+  font-size: 16px;
+  font-weight: 700;
+  padding: 10px 24px;
+  border-radius: 9999px;
+  border: 2px solid var(--on-surface);
+  transform: rotate(-15deg);
+}
+
+/* Hiasan Latar Belakang */
+.hero-blob {
+  position: absolute;
+  top: -10%;
+  right: -5%;
+  width: 600px;
+  height: 600px;
+  background-color: var(--primary);
+  opacity: 0.08;
+  border-radius: 50%;
+  filter: blur(80px);
+  z-index: 0;
+}
+
+/* =========================================
+   PENGATURAN RESPONSIVE (UNTUK HP & TABLET)
+   ========================================= */
+
+@media (max-width: 992px) {
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 60px;
+  }
+
+  .greeting-box {
+    align-items: center;
+  }
+
+  .hero-image-box {
+    justify-content: center;
+  }
+
+  .hero-name {
+    font-size: 80px;
+  }
+
+  .hero-role {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-section {
+    padding: 60px 0;
+  }
+
+  .hero-name {
+    font-size: 65px;
+    margin-bottom: 10px;
+  }
+
+  .sketch-highlight::after {
+    height: 25px;
+    bottom: 5px;
+  }
+
+  .hero-role {
+    font-size: 32px;
+  }
+
+  .hero-image-wrapper {
+    width: 280px;
+    height: 360px;
+  }
+
+  .cute-badge {
+    font-size: 14px;
+    padding: 8px 20px;
+    bottom: -15px;
+    left: -15px;
+  }
+}

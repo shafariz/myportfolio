@@ -1,0 +1,237 @@
+/* src/sections/About/About.css */
+
+.about-section {
+  width: 100%;
+  background-color: var(--background);
+  padding: 120px 0;
+  position: relative;
+}
+
+.about-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.about-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+}
+
+/* --- KOLOM KIRI (Teks) --- */
+.about-text-area {
+  flex: 1;
+  position: relative;
+  padding-right: 20px;
+}
+
+.about-title {
+  font-family: var(--font-headline);
+  font-size: 46px;
+  line-height: 1.1;
+  color: var(--on-background);
+  margin-bottom: 24px;
+  text-transform: uppercase;
+}
+
+.italic-accent {
+  font-family: var(--font-accent);
+  font-style: italic;
+  text-transform: lowercase;
+  color: var(--primary);
+  position: relative;
+  z-index: 1;
+}
+
+.italic-accent::after {
+  content: '';
+  position: absolute;
+  bottom: 8px;
+  left: -5%;
+  width: 110%;
+  height: 15px;
+  background-color: var(--tertiary-container);
+  z-index: -1;
+  border-radius: 9999px;
+  transform: rotate(-2deg);
+}
+
+.about-description {
+  font-family: var(--font-body);
+  font-size: 18px;
+  color: var(--on-surface-variant);
+  line-height: 1.8;
+  text-align: justify;
+  width: 100%;
+}
+
+.about-name-bold {
+  font-weight: 700;
+  color: var(--on-background);
+}
+
+.about-decoration-badge {
+  display: inline-block;
+  margin-top: 32px;
+  background-color: var(--surface);
+  color: var(--on-surface);
+  font-family: var(--font-button);
+  font-size: 14px;
+  font-weight: bold;
+  padding: 10px 24px;
+  border-radius: 9999px;
+  border: 2px solid var(--outline-variant);
+  transform: rotate(-5deg);
+}
+
+/* --- KOLOM KANAN (Pendidikan) --- */
+.about-edu-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.edu-section-title {
+  font-family: var(--font-headline);
+  font-size: 32px;
+  color: var(--on-background);
+  margin-bottom: 24px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.edu-cards-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+.edu-card {
+  width: 100%; 
+  background-color: var(--surface);
+  border: 2px solid var(--outline-variant);
+  border-radius: 20px;
+  padding: 32px;
+  position: relative;
+  transition: all 0.3s ease;
+  box-shadow: 6px 6px 0px var(--primary-container);
+  
+  /* Layout Flexbox agar logo dan teks bersebelahan */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.edu-card:nth-child(2) {
+  box-shadow: 6px 6px 0px var(--secondary-container);
+}
+
+.edu-card:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 10px 10px 0px var(--primary-container);
+  border-color: var(--primary);
+}
+
+.edu-card:nth-child(2):hover {
+  box-shadow: 10px 10px 0px var(--secondary-container);
+}
+
+.edu-text-content {
+  flex: 1;
+}
+
+.edu-year-badge {
+  display: inline-block;
+  background-color: var(--on-surface);
+  color: var(--surface);
+  font-family: var(--font-button);
+  font-size: 12px;
+  padding: 6px 16px;
+  border-radius: 9999px;
+  margin-bottom: 16px;
+  letter-spacing: 0.05em;
+}
+
+.edu-major {
+  font-family: var(--font-button);
+  font-size: 22px;
+  color: var(--on-background);
+  margin-bottom: 8px;
+}
+
+.edu-school {
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--on-surface-variant);
+}
+
+/* Gaya untuk Logo di dalam kartu */
+.edu-logo {
+  width: 80px;
+  height: 80px;
+  object-fit: contain; /* Memastikan logo tidak terpotong */
+  opacity: 0.9;
+}
+
+/* =========================================
+   PENGATURAN RESPONSIVE (UNTUK HP & TABLET)
+   ========================================= */
+
+@media (max-width: 992px) {
+  .about-content {
+    flex-direction: column;
+    gap: 60px;
+  }
+
+  .about-text-area {
+    padding-right: 0;
+    text-align: center;
+  }
+
+  .about-description {
+    text-align: justify;
+  }
+
+  .italic-accent::after {
+    bottom: 5px;
+    height: 10px;
+  }
+
+  .about-edu-area {
+    width: 100%;
+    align-items: center;
+  }
+
+  .edu-cards-wrapper {
+    align-items: stretch;
+  }
+}
+
+@media (max-width: 576px) {
+  .about-section {
+    padding: 80px 0;
+  }
+
+  .about-title {
+    font-size: 36px;
+  }
+  
+  .edu-section-title {
+    font-size: 28px;
+  }
+
+  .edu-card {
+    padding: 24px;
+    gap: 16px; /* Mengurangi jarak antara teks dan logo di HP */
+  }
+  
+  /* Mengecilkan logo di HP agar ruang teks tidak sempit */
+  .edu-logo {
+    width: 50px;
+    height: 50px;
+  }
+}
