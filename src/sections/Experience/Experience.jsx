@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaChevronRight } from 'react-icons/fa';
-import gsap from 'gsap';
 import { portfolioData } from '../../data/portfolioData';
 import './Experience.css';
 
@@ -11,22 +10,6 @@ const Experience = () => {
 
   const toggleAccordion = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
-  };
-
-  const handleHeadMouseEnter = (e) => {
-    gsap.to(e.currentTarget, {
-      scale: 1.015,
-      duration: 0.3,
-      ease: "power2.out"
-    });
-  };
-
-  const handleHeadMouseLeave = (e) => {
-    gsap.to(e.currentTarget, {
-      scale: 1,
-      duration: 0.3,
-      ease: "power2.out"
-    });
   };
 
   return (
@@ -64,8 +47,6 @@ const Experience = () => {
                 <div
                   className="exp-accordion-head"
                   onClick={() => toggleAccordion(index)}
-                  onMouseEnter={handleHeadMouseEnter}
-                  onMouseLeave={handleHeadMouseLeave}
                 >
                   <div className="exp-info-box">
                     <h3 className="exp-role-title">{exp.title}</h3>
@@ -88,7 +69,7 @@ const Experience = () => {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                      transition={{ duration: 0.28, ease: [0.25, 1, 0.5, 1] }}
                     >
                       <div className="exp-accordion-body">
                         <ul className="accordion-description-list">

@@ -22,7 +22,7 @@
 
 .about-title-heading {
   font-family: var(--font-heading);
-  font-size: 2.35rem;
+  font-size: 2.5rem;
   font-weight: 800;
   line-height: 1.25;
   letter-spacing: -0.02em;
@@ -196,6 +196,12 @@
   .about-photo-card {
     width: 260px;
     height: 310px;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-title-heading {
+    font-size: 2rem;
   }
 }
 

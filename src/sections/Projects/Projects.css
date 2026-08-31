@@ -213,7 +213,16 @@
 
 /* Responsive */
 @media (max-width: 768px) {
+  .projects-title-heading {
+    font-size: 2rem;
+  }
   .projects-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .projects-title-heading {
+    font-size: 1.8rem;
   }
 }

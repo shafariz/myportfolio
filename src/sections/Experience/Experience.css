@@ -41,7 +41,9 @@
 .exp-glass-item {
   overflow: hidden;
   border-radius: 20px;
-  transition: all 0.35s ease;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .exp-glass-item.exp-active {
@@ -56,6 +58,11 @@
   align-items: center;
   cursor: pointer;
   user-select: none;
+  transition: transform 0.25s ease;
+}
+
+.exp-accordion-head:hover {
+  transform: scale(1.01);
 }
 
 .exp-info-box {
@@ -106,8 +113,9 @@
   align-items: center;
   justify-content: center;
   color: var(--text-primary);
-  transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.3s;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.3s;
   flex-shrink: 0;
+  will-change: transform;
 }
 
 .exp-toggle-icon.icon-rotated {
@@ -118,6 +126,9 @@
 
 .exp-accordion-body-wrapper {
   overflow: hidden;
+  will-change: height, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .exp-accordion-body {
@@ -175,5 +186,11 @@
   .exp-head-right {
     width: 100%;
     justify-content: space-between;
+  }
+}
+
+@media (max-width: 480px) {
+  .experience-title-heading {
+    font-size: 1.8rem;
   }
 }
